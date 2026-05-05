@@ -13,7 +13,7 @@ const oswald = Oswald({
 const baseUrl = 'https://delposh-fitness.vercel.app';
 
 // OG Image (ImageKit CDN)
-const ogImage = 'https://ik.imagekit.io/jonadest/logo.png';
+const ogImage = 'https://ik.imagekit.io/jonadest/delposh.jpg';
 
 export const metadata = {
     title: 'Delposh Beauty & Fitness | Premium Fitness & Beauty Center',
