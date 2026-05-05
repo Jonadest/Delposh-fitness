@@ -1,26 +1,177 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ========================================
+   CUSTOM THEME
+   ======================================== */
+
+@theme {
+  --font-oswald: 'Oswald', sans-serif;
+
+  /* Gold color palette */
+  --color-gold-400: #FFD700;
+  --color-gold-500: #F0C040;
+  --color-gold-600: #DAA520;
+  --color-gold-700: #B8860B;
+  --color-gold-800: #8B6914;
+  --color-gold-900: #6B4F12;
+
+  /* Animation keyframes */
+  --animate-marquee: marquee 25s linear infinite;
+  --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
+  --animate-fade-in: fadeIn 1s ease-out forwards;
+  --animate-bounce-slow: bounce 2s infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ========================================
+   DAISYUI THEME OVERRIDES - GOLD & BLACK
+   ======================================== */
+
+[data-theme="delposh"] {
+  --color-base-100: #0a0a0a;
+  --color-base-200: #1a1a1a;
+  --color-base-300: #262626;
+  --color-base-content: #ffffff;
+  --color-primary: #DAA520;
+  --color-primary-content: #000000;
+  --color-secondary: #F0C040;
+  --color-secondary-content: #000000;
+  --color-accent: #FFD700;
+  --color-accent-content: #000000;
+  --color-neutral: #333333;
+  --color-neutral-content: #cccccc;
+  --color-info: #3b82f6;
+  --color-info-content: #ffffff;
+  --color-success: #22c55e;
+  --color-success-content: #000000;
+  --color-warning: #f59e0b;
+  --color-warning-content: #000000;
+  --color-error: #ef4444;
+  --color-error-content: #ffffff;
+  --radius-box: 0.5rem;
+  --radius-btn: 0.375rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
+  50% { transform: translateY(0); animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
+}
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Oswald', sans-serif;
+  background-color: #0a0a0a;
+  color: #ffffff;
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #FFD700, #DAA520, #B8860B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(218, 165, 32, 0.1);
+}
+
+.border-glow-gold {
+  box-shadow: 0 0 15px rgba(218, 165, 32, 0.3), 0 0 30px rgba(218, 165, 32, 0.1);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #1a1a1a; }
+::-webkit-scrollbar-thumb { background: #DAA520; border-radius: 4px; }
+
+/* Selection */
+::selection { background-color: rgba(218, 165, 32, 0.3); color: #FFD700; }
+::-moz-selection { background-color: rgba(218, 165, 32, 0.3); color: #FFD700; }
+
+/* ========================================
+   DAISYUI COMPONENT OVERRIDES
+   ======================================== */
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(218, 165, 32, 0.1);
+}
+
+.dropdown-content {
+  background-color: #0a0a0a !important;
+  border: 1px solid rgba(218, 165, 32, 0.2) !important;
+  border-radius: 0.5rem !important;
+}
+
+.dropdown-content a,
+.dropdown-content .btn {
+  color: #d1d5db !important;
+  transition: all 0.2s;
+}
+
+.dropdown-content a:hover,
+.dropdown-content .btn:hover {
+  color: #F0C040 !important;
+  background-color: #1a1a1a !important;
+}
+
+.btn-gold {
+  background-color: #F0C040 !important;
+  color: #000000 !important;
+  border: none !important;
+  font-weight: 700 !important;
+}
+
+.btn-gold:hover {
+  background-color: #FFD700 !important;
+}
+
+/* Loading bar animation for intro */
+@keyframes loading {
+    0% {
+        width: 0%;
+        margin-left: 0;
+    }
+    50% {
+        width: 70%;
+        margin-left: 15%;
+    }
+    100% {
+        width: 100%;
+        margin-left: 0;
+    }
 }
