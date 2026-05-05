@@ -11,6 +11,7 @@ import Testimonials from '@/components/Testimonials';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import Intro from '@/components/Intro';
+import Location from '@/components/Location';
 
 export default function Home() {
     const [showIntro, setShowIntro] = useState(true);
@@ -35,6 +36,7 @@ export default function Home() {
                 <Trainers />
                 <Membership />
                 <Testimonials />
+                <Location/>
                 <Contact />
                 <Footer />
             </div>
